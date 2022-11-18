@@ -584,14 +584,22 @@ function levrel () {
         game.splash("Level 11", "(" + level + ")")
         tiles.setCurrentTilemap(tilemap`level34`)
         hver_runde()
-    } else if (false) {
+    } else if (level == 17) {
         game.splash("Level 12", "(" + level + ")")
-    } else if (false) {
-    	
-    } else if (false) {
-    	
-    } else if (false) {
-    	
+        tiles.setCurrentTilemap(tilemap`level35`)
+        hver_runde()
+    } else if (level == 18) {
+        game.splash("Level 13", "(" + level + ")")
+        tiles.setCurrentTilemap(tilemap`level36`)
+        hver_runde()
+    } else if (level == 19) {
+        game.splash("Level 14", "(" + level + ")")
+        tiles.setCurrentTilemap(tilemap`level38`)
+        hver_runde()
+    } else if (level == 20) {
+        game.splash("Level 15", "(" + level + ")")
+        tiles.setCurrentTilemap(tilemap`level39`)
+        hver_runde()
     } else if (false) {
     	
     } else if (false) {
@@ -1307,7 +1315,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.hopp, function (sprite, otherSpr
     otherSprite.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.trap, function (sprite, otherSprite) {
-    trap_point += 1
+    info.changeScoreBy(-1)
     otherSprite.destroy()
     if (trapper == 1) {
         trap_ting.y += -110
@@ -4504,6 +4512,68 @@ function sprites2 () {
         tiles.placeOnTile(coin, value)
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile46`)) {
+        pil_ned = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . f f f f f . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.ingenting)
+        animation.runImageAnimation(
+        pil_ned,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . f f f f f . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . f f f f f . . . . . 
+            . . . . . . . f f f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `],
+        700,
+        true
+        )
+        tiles.placeOnTile(pil_ned, value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
+    }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.høyre, function (sprite, otherSprite) {
     gravity = 1
@@ -4518,7 +4588,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Ferdig, function (sprite, otherS
     } else if (info.life() < 10) {
         info.player1.changeScoreBy(20)
     }
-    info.player1.setScore(info.score() - trap_point)
     levrel()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile30`, function (sprite, location) {
@@ -4556,6 +4625,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     music.buzzer.play()
     pause(1000)
 })
+let pil_ned: Sprite = null
 let coin: Sprite = null
 let mySprite3: Sprite = null
 let spiderlist: Sprite[] = []
@@ -4579,13 +4649,13 @@ let tut_3 = 0
 let gravity = 0
 let level = 0
 let trap_point = 0
-trap_point = 0
 level = 1
 gravity = 0
 tut_3 = 1
 størrelse = 1
 trapper = 1
 checkpoint = 1
+let bevegelsessperre = 0
 if (game.ask("First Time Playing?")) {
     pause(1000)
     game.showLongText("up in the left corner you see your health and you`re score", DialogLayout.Bottom)
@@ -4621,8 +4691,8 @@ if (størrelse == 1) {
         . . . . . f . . . f . . . . . . 
         `, SpriteKind.Player)
 }
-mySprite2.ay = 500
 controller.moveSprite(mySprite2, 100, 0)
+mySprite2.ay = 500
 scene.cameraFollowSprite(mySprite2)
 levrel()
 game.onUpdate(function () {

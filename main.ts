@@ -2087,7 +2087,8 @@ function hver_runde () {
     sko_1 = 0
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    level = game.askForNumber("level")
+    levrel()
 })
 info.onLifeZero(function () {
     if (level < 6) {

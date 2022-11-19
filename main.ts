@@ -12,6 +12,7 @@ namespace SpriteKind {
     export const høyre = SpriteKind.create()
     export const ekstraliv = SpriteKind.create()
     export const ekstrapoint = SpriteKind.create()
+    export const hoppspesiell = SpriteKind.create()
 }
 function levrel () {
     if (level == 1) {
@@ -573,7 +574,7 @@ function levrel () {
         pause(2000)
         game.showLongText("The red grass is very hot", DialogLayout.Bottom)
         game.showLongText("that means you cant stay still or else your feet will burn off", DialogLayout.Bottom)
-        game.showLongText("youre character will move by himself", DialogLayout.Bottom)
+        game.showLongText("your character will move by himself", DialogLayout.Bottom)
         hver_runde()
     } else if (level == 15) {
         checkpoint += 1
@@ -593,6 +594,7 @@ function levrel () {
         tiles.setCurrentTilemap(tilemap`level36`)
         hver_runde()
     } else if (level == 19) {
+        tut_3 = 14
         game.splash("Level 14", "(" + level + ")")
         tiles.setCurrentTilemap(tilemap`level38`)
         hver_runde()
@@ -745,7 +747,7 @@ function animasjon () {
             . . . . . f . f . . . . . . . . 
             `)
     }
-    if (mySprite2.vx < 5 && (sko_1 > 0 && (størrelse == 1 && mySprite2.vx == 0))) {
+    if (mySprite2.vx < 5 && (sko_1 > 0 && (sko_1 < 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
         mySprite2.setImage(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . f f . . . . . . . . 
@@ -765,7 +767,7 @@ function animasjon () {
             . . . . . f d f . f d f . . . . 
             `)
     }
-    if (mySprite2.vy > 80 && (sko_1 > 0 && størrelse == 1)) {
+    if (mySprite2.vy > 80 && (sko_1 > 0 && (sko_1 < 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
         mySprite2.setImage(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . f f . . . . . . . 
@@ -785,7 +787,7 @@ function animasjon () {
             . . . . f d f . . . . . . . . . 
             `)
     }
-    if (mySprite2.vy > 150 && (sko_1 > 1 && størrelse == 1)) {
+    if (mySprite2.vy > 150 && (sko_1 > 0 && (sko_1 < 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
         mySprite2.setImage(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . f f . . . . . . . 
@@ -805,7 +807,7 @@ function animasjon () {
             . . . . . . . . . . . . . . . . 
             `)
     }
-    if (mySprite2.vy < -180 && (sko_1 > 0 && størrelse == 1)) {
+    if (mySprite2.vy > 150 && (sko_1 > 0 && (sko_1 < 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
         mySprite2.setImage(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -822,6 +824,86 @@ function animasjon () {
             . . . . . f . . . f . . f . . . 
             . . . . . . . . 2 2 2 . . . . . 
             . . . . . . . 2 2 2 2 2 . . . . 
+            . . . . . . . f d f d f . . . . 
+            `)
+    }
+    if (mySprite2.vx < 5 && (sko_1 > 0 && (sko_1 > 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
+        mySprite2.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f . . . . . . . . 
+            . . . . . f f f f f f f . . . . 
+            . . . . . f . . . . . f . . . . 
+            . . . . f . . f . f . f . . . . 
+            . . . . f f . . . . f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . f f f . . f . f . . . . . 
+            . . . f . . . . f . . f f . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . 5 5 f 5 5 . . . . . 
+            . . . . . 5 5 5 . 5 5 5 . . . . 
+            . . . . . f d f . f d f . . . . 
+            `)
+    }
+    if (mySprite2.vy > 80 && (sko_1 > 0 && (sko_1 > 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
+        mySprite2.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . f . . 
+            . . . . . f f f f f f f f . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . 5 5 . . . 
+            . . . . . 5 5 f f f f 5 5 5 . . 
+            . . . . 5 5 5 f . . . f d f . . 
+            . . . . f d f . . . . . . . . . 
+            `)
+    }
+    if (mySprite2.vy > 150 && (sko_1 > 0 && (sko_1 > 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
+        mySprite2.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . f f . . f . . f f . . 
+            . . . . . . . f f f f f . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . 5 5 . . . f . . . . . . 
+            . . . 5 5 5 f . . f . 5 5 . . . 
+            . . . f d f . f f f f 5 5 5 . . 
+            . . . . . . . . . . . f d f . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+    }
+    if (mySprite2.vy > 150 && (sko_1 > 0 && (sko_1 > 50 && (størrelse == 1 && mySprite2.vx == 0)))) {
+        mySprite2.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . f f f f f f . . . . 
+            . . . . . . f . . f . f . . . . 
+            . . . . . f f . . f . f f . . . 
+            . . . . . f . . . f . . f . . . 
+            . . . . . . . . 5 5 5 . . . . . 
+            . . . . . . . 5 5 5 5 5 . . . . 
             . . . . . . . f d f d f . . . . 
             `)
     }
@@ -1026,7 +1108,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         100,
         true
         )
-    } else if (sko_1 > 0 && størrelse == 1) {
+    } else if (sko_1 > 0 && (sko_1 < 50 && størrelse == 1)) {
         animation.runImageAnimation(
         mySprite2,
         [img`
@@ -1222,6 +1304,132 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         100,
         true
         )
+    } else if (sko_1 > 0 && (sko_1 > 50 && størrelse == 1)) {
+        animation.runImageAnimation(
+        mySprite2,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . f f . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . . f . . . . . f . . . . . 
+            . . . . f f f . f . . f . . . . 
+            . . . . . f . . . . f f . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . f . f . . f f f . . . 
+            . . . f f . . f . . . . f . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . 5 5 f f f 5 5 . . . . 
+            . . . . 5 5 5 . . 5 5 5 . . . . 
+            . . . . f d f . . f d f . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . f . f . . f f . . . . . 
+            . . f f . . f . . f f . . . . . 
+            . . . . . . f . . . f . . . . . 
+            . . . . 5 5 f f 5 5 . . . . . . 
+            . . . 5 5 5 . 5 5 5 . . . . . . 
+            . . . f d f . f d f . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . f . f . . f . . . . . . 
+            . . f f . . f . . f . . . . . . 
+            . . . . . . f . f f . . . . . . 
+            . . . . 5 5 f 5 5 . . . . . . . 
+            . . . 5 5 5 5 5 5 . . . . . . . 
+            . . . f d f f d f . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . f f f . f . . f . . . . . . 
+            . . . . . . f . . f . . . . . . 
+            . . . . . . f . f f . . . . . . 
+            . . . 5 5 f f 5 5 . . . . . . . 
+            . . 5 5 5 . 5 5 5 . . . . . . . 
+            . . f d f . f d f . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . f f f . f . . f . . . . . . 
+            . . . . . . f . . f . . . . . . 
+            . . . . . . f . f f . . . . . . 
+            . . . 5 5 f 5 5 . . . . . . . . 
+            . . 5 5 5 5 5 5 . . . . . . . . 
+            . . f d f f d f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . f . f . . f . . . . . . 
+            . . f f . . f . . f . . . . . . 
+            . . . . . . f . f f . . . . . . 
+            . . . . 5 5 f 5 5 . . . . . . . 
+            . . . 5 5 5 5 5 5 . . . . . . . 
+            . . . f d f f d f . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . f f f f f f f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f f f . f . . f . . . . . 
+            . . . . f . . . . f f . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f f f f . . . . . . . 
+            . . . . f . f . . f f . . . . . 
+            . . f f . . f . . f f . . . . . 
+            . . . . . . f . . . f . . . . . 
+            . . . . 5 5 f 5 5 . . . . . . . 
+            . . . 5 5 5 5 5 5 . . . . . . . 
+            . . . f d f f d f . . . . . . . 
+            `],
+        100,
+        true
+        )
     } else {
     	
     }
@@ -1299,6 +1507,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.tut, function (sprite, otherSpri
         pause(2000)
         otherSprite.sayText("its so windy here that we need to travel somewhere warmer next level.")
         pause(5000)
+        otherSprite.destroy()
+    } else if (tut_3 == 14) {
+        otherSprite.sayText("Hi im back!")
+        pause(1000)
+        otherSprite.sayText("With these yellow supershous you can jump high for as many times as you want.")
+        pause(5500)
         otherSprite.destroy()
     } else {
     	
@@ -1838,7 +2052,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         100,
         true
         )
-    } else if (sko_1 > 0 && størrelse == 1) {
+    } else if (sko_1 > 0 && (sko_1 < 50 && størrelse == 1)) {
         animation.runImageAnimation(
         mySprite2,
         [img`
@@ -2034,6 +2248,132 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         100,
         true
         )
+    } else if (sko_1 > 0 && (sko_1 > 50 && størrelse == 1)) {
+        animation.runImageAnimation(
+        mySprite2,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f . . . . . . . . 
+            . . . . . f f f f f f f . . . . 
+            . . . . . f . . . . . f . . . . 
+            . . . . f . . f . f f f . . . . 
+            . . . . f f . . . . f . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . . . f f f f . . . . . . 
+            . . . f f f . . f . f . . . . . 
+            . . . f . . . . f . . f f . . . 
+            . . . . . . . . f . . . . . . . 
+            . . . . 5 5 f f f 5 5 . . . . . 
+            . . . . 5 5 5 . . 5 5 5 . . . . 
+            . . . . f d f . . f d f . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . f f . . f . f . . . . 
+            . . . . . f f . . f . . f f . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . . . 5 5 f f 5 5 . . . . 
+            . . . . . . 5 5 5 . 5 5 5 . . . 
+            . . . . . . f d f . f d f . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . f . . f . f . . . . 
+            . . . . . . f . . f . . f f . . 
+            . . . . . . f f . f . . . . . . 
+            . . . . . . . 5 5 f 5 5 . . . . 
+            . . . . . . . 5 5 5 5 5 5 . . . 
+            . . . . . . . f d f f d f . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . f . . f . f f f . . 
+            . . . . . . f . . f . . . . . . 
+            . . . . . . f f . f . . . . . . 
+            . . . . . . . 5 5 f f 5 5 . . . 
+            . . . . . . . 5 5 5 . 5 5 5 . . 
+            . . . . . . . f d f . f d f . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . f . . f . f f f . . 
+            . . . . . . f . . f . . . . . . 
+            . . . . . . f f . f . . . . . . 
+            . . . . . . . . 5 5 f 5 5 . . . 
+            . . . . . . . . 5 5 5 5 5 5 . . 
+            . . . . . . . . f d f f d f . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . f . . f . f . . . . 
+            . . . . . . f . . f . . f f . . 
+            . . . . . . f f . f . . . . . . 
+            . . . . . . . 5 5 f 5 5 . . . . 
+            . . . . . . . 5 5 5 5 5 5 . . . 
+            . . . . . . . f d f f d f . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . f f f f f f f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . f . . f . f f f . . . 
+            . . . . . f f . . . . f . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . f f f f . . . . . 
+            . . . . . f f . . f . f . . . . 
+            . . . . . f f . . f . . f f . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . . . . 5 5 f 5 5 . . . . 
+            . . . . . . . 5 5 5 5 5 5 . . . 
+            . . . . . . . f d f f d f . . . 
+            `],
+        100,
+        true
+        )
     } else {
     	
     }
@@ -2050,6 +2390,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.ekstrapoint, function (sprite, o
 sprites.onOverlap(SpriteKind.Player, SpriteKind.venstre, function (sprite, otherSprite) {
     gravity = 1
     mySprite2.vx = -150
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.hoppspesiell, function (sprite, otherSprite) {
+    sko_1 = 999
+    info.player2.setScore(sko_1)
+    otherSprite.destroy()
 })
 function hver_runde () {
     mySprite2.ay = 500
@@ -2088,6 +2433,24 @@ function hver_runde () {
         value.destroy()
     }
     for (let value of sprites.allOfKind(SpriteKind.ekstrapoint)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.hoppspesiell)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.check)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.tut_mann)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.liten)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.høyre)) {
+        value.destroy()
+    }
+    for (let value of sprites.allOfKind(SpriteKind.venstre)) {
         value.destroy()
     }
     størrelse = 1
@@ -4574,6 +4937,170 @@ function sprites2 () {
         tiles.placeOnTile(pil_ned, value)
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile49`)) {
+        fot_spesiell = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . f f f f f . . . . . . . . . 
+            . . f 5 5 5 5 f . . . . . . . . 
+            . . f 5 5 5 5 5 f f . . . . . . 
+            . . f f 5 f 5 5 5 f f . . . . . 
+            . . . f 5 f f f 5 5 f f f . . . 
+            . . . f 5 5 5 5 5 5 5 5 f f . . 
+            . . . f 5 5 5 5 5 5 5 5 5 f f . 
+            . . . . f d d d d d d d d d f . 
+            . . . . . f d f d f d f d f . . 
+            `, SpriteKind.hoppspesiell)
+        animation.runImageAnimation(
+        fot_spesiell,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . f f f f f . . . . . . . . . . 
+            . f 5 5 5 5 f . . . . . . . . . 
+            . f 5 5 5 5 5 f f . . . . . . . 
+            . f f 5 f 5 5 5 f f . . . . . . 
+            . . f 5 f f f 5 5 f f f . . . . 
+            . . f 5 5 5 5 5 5 5 5 f f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f f . . 
+            . . . f d d d d d d d d d f . . 
+            . . . . f d f d f d f d f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `],
+        200,
+        true
+        )
+        tiles.placeOnTile(fot_spesiell, value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
+    }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.høyre, function (sprite, otherSprite) {
     gravity = 1
@@ -4625,6 +5152,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     music.buzzer.play()
     pause(1000)
 })
+let fot_spesiell: Sprite = null
 let pil_ned: Sprite = null
 let coin: Sprite = null
 let mySprite3: Sprite = null
@@ -4719,6 +5247,11 @@ game.onUpdate(function () {
 })
 forever(function () {
     if (mySprite2.tileKindAt(TileDirection.Center, assets.tile`myTile45`)) {
+        music.buzzer.play()
+        info.changeLifeBy(-1)
+        pause(500)
+    }
+    if (mySprite2.tileKindAt(TileDirection.Center, assets.tile`myTile47`)) {
         music.buzzer.play()
         info.changeLifeBy(-1)
         pause(500)

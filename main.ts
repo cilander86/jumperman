@@ -280,7 +280,7 @@ function levrel () {
         game.splash("Tutorial", "(" + level + ")")
         hver_runde()
     } else if (level == 5) {
-        checkpoint += 1
+        checkpoint = level
         tut_3 = 4
         scene.setBackgroundColor(9)
         tiles.setCurrentTilemap(tilemap`level0`)
@@ -427,7 +427,7 @@ function levrel () {
         game.splash("Level 6", "(" + level + ")")
         hver_runde()
     } else if (level == 10) {
-        checkpoint += 1
+        checkpoint = level
         tut_3 = 7
         game.splash("Tutorial (checkpoint)", "(" + level + ")")
         tiles.setCurrentTilemap(tilemap`tut4`)
@@ -577,7 +577,7 @@ function levrel () {
         game.showLongText("your character will move by himself", DialogLayout.Bottom)
         hver_runde()
     } else if (level == 15) {
-        checkpoint += 1
+        checkpoint = level
         game.splash("Level 10 (checkpoint)", "(" + level + ")")
         tiles.setCurrentTilemap(tilemap`level33`)
         hver_runde()
@@ -2774,7 +2774,7 @@ info.onLifeZero(function () {
         game.over(false)
     } else {
         game.showLongText("You have no lives left and will respawn on last checkpoint...", DialogLayout.Bottom)
-        level = checkpoint * 5
+        level = checkpoint
         levrel()
         info.setScore(-10)
         info.setLife(8)

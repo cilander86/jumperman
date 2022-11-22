@@ -5638,7 +5638,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Ferdig, function (sprite, otherS
     levrel()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile30`, function (sprite, location) {
-    info.setScore(0)
+    info.player2.setScore(0)
     størrelse = 1
     sko_1 = 0
     mySprite2.ay = 500
@@ -5668,7 +5668,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile30`, function (sprite, 
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    info.player1.changeScoreBy(-4)
+    info.player1.changeScoreBy(-3)
     music.buzzer.play()
     pause(1000)
 })
